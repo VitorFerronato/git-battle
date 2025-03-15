@@ -4,9 +4,13 @@
     <span></span>
     <span></span>
     <span></span>
-    Fight!</a
+    {{ title }}</a
   >
 </template>
+
+<script setup>
+defineProps({ title: String });
+</script>
 
 <style scoped>
 a {
