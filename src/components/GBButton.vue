@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="button">
+  <a v-bind="$attrs" href="#" class="button">
     <span></span>
     <span></span>
     <span></span>

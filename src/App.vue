@@ -6,14 +6,15 @@
 
     <div class="input-container">
       <div class="input-box">
-        <GBInput label="User 1" />
+        <GBInput v-model="user1" label="User 1" />
         <span>VS</span>
-        <GBInput label="User 2" />
+        <GBInput v-model="user2" label="User 2" />
       </div>
     </div>
 
     <div class="button-box">
-      <GBButton />
+      <GBButton v-if="!isLoading" @click="compareUsers" />
+      <GBLoader v-else />
     </div>
   </div>
 </template>
@@ -21,6 +22,33 @@
 <script setup>
 import GBInput from "./components/GBInput.vue";
 import GBButton from "./components/GBButton.vue";
+
+import { ref } from "vue";
+import GBLoader from "./components/GBLoader.vue";
+
+const user1 = ref("");
+const user2 = ref("");
+const results = ref(null);
+const isLoading = ref(false);
+
+const compareUsers = async () => {
+  isLoading.value = true;
+
+  if (!user1.value || !user2.value) alert("Por favor, insira dois usuarios!");
+
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:5000/compare?dev1=${user1.value}&dev2=${user2.value}`
+    );
+
+    results.value = await response.json();
+  } catch (error) {
+    console.log("Erro ao buscar dados:", error);
+    alert("Erro ao buscar os dados. Tente novamente!");
+  }
+
+  isLoading.value = false;
+};
 </script>
 
 <style scoped>
@@ -62,6 +90,6 @@ import GBButton from "./components/GBButton.vue";
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 </style>

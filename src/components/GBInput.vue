@@ -1,12 +1,11 @@
 <template>
   <div class="form__group field">
     <input
+      v-bind="$attrs"
+      :placeholder="label"
+      @input="$emit('update:modelValue', $event.target.value)"
       type="input"
       class="form__field"
-      placeholder="Name"
-      name="name"
-      id="name"
-      required
     />
     <label for="name" class="form__label">{{ label }}</label>
   </div>
@@ -25,18 +24,18 @@ defineProps({
 <style scoped>
 .form__group {
   position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 50%;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 250px;
 }
 
 .form__field {
   font-family: inherit;
   width: 100%;
-  border: 0;
+  border: none;
   border-bottom: 2px solid var(--gray-color);
   outline: 0;
-  font-size: 1.3rem;
+  font-size: 17px;
   color: var(--white-color);
   padding: 7px 0;
   background: transparent;
@@ -48,7 +47,7 @@ defineProps({
 }
 
 .form__field:placeholder-shown ~ .form__label {
-  font-size: 1.3rem;
+  font-size: 17px;
   cursor: text;
   top: 20px;
 }
@@ -58,8 +57,9 @@ defineProps({
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: 17px;
   color: var(--gray-color);
+  pointer-events: none;
 }
 
 .form__field:focus {
@@ -68,8 +68,8 @@ defineProps({
   border-width: 3px;
   border-image: linear-gradient(
     to right,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--secondary-color),
+    var(--primary-color)
   );
   border-image-slice: 1;
 }
@@ -79,7 +79,7 @@ defineProps({
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: 17px;
   color: var(--primary-color);
   font-weight: 700;
 }
