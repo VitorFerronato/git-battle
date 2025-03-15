@@ -4,7 +4,7 @@
 
 <style scoped>
 .loader {
-  width: 50px;
+  width: 45px;
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
