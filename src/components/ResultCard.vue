@@ -48,7 +48,7 @@ defineProps({
 
   border: 0.5px solid var(--primary-color);
   border-radius: 10px;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
 
   color: var(--white-color);
 }
@@ -61,7 +61,7 @@ defineProps({
 .image img {
   width: 80px;
   border-radius: 50%;
-  margin-top: -4rem;
+  margin-top: -3rem;
 }
 
 h3 {

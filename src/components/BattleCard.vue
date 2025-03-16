@@ -10,6 +10,30 @@
       <div class="winner">
         <h4>WINNER</h4>
         <p>{{ results.winner }}</p>
+
+        <div
+          class="tooltip"
+          @mouseover="showTooltip = true"
+          @mouseleave="showTooltip = false"
+        >
+          <span>i</span>
+
+          <!-- Adicionando a transição -->
+          <Transition name="fade">
+            <div v-if="showTooltip" class="tooltip-baloon">
+              <span class="font-weight-bold">Como calculamos o vencedor?</span>
+              <span
+                ><span class="font-weight-bold">Followers:</span> 2 Pontos</span
+              >
+              <span
+                ><span class="font-weight-bold">Public Repos:</span> 1.5
+                Pontos</span
+              >
+              <span><span class="font-weight-bold">Stars:</span> 2 Pontos</span>
+              <span><span class="font-weight-bold">Forks:</span> 1 Pontos</span>
+            </div>
+          </Transition>
+        </div>
       </div>
 
       <div class="button">
@@ -20,9 +44,11 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import ResultCard from "./ResultCard.vue";
 import GBButton from "./GBButton.vue";
 
+const showTooltip = ref(false);
 defineProps({
   results: Object,
 });
@@ -49,11 +75,50 @@ defineProps({
 }
 
 .winner {
-  margin-top: 4rem;
+  position: relative;
+  margin-top: 2rem;
   border: 0.5px solid var(--primary-color);
   width: 250px;
   padding: 1rem;
   color: var(--white-color);
+}
+
+.tooltip {
+  width: 30px;
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.tooltip-baloon {
+  position: absolute;
+  right: -11rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--primary-color);
+  background-color: var(--bg-color);
+  padding: 8px;
+  border-radius: 4px;
+  width: 200px;
+  color: var(--white-color);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .winner h4 {
@@ -75,5 +140,18 @@ defineProps({
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+.how-winner {
+  margin-top: 5rem;
+  color: var(--white-color);
+}
+
+.how-winner:hover {
+  text-decoration: underline;
+}
+
+.font-weight-bold {
+  font-weight: bold;
 }
 </style>
