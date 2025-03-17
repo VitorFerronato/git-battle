@@ -2,7 +2,7 @@
   <div class="result-container">
     <div class="result-user-info">
       <ResultCard :dev="results?.dev1" />
-      <img src="./assets/vs-showdown.png" alt="" class="showdown" />
+      <img src="../assets/vs-showdown.png" alt="" class="showdown" />
       <ResultCard :dev="results?.dev2" />
     </div>
 

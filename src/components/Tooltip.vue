@@ -8,18 +8,18 @@
 
     <Transition name="fade">
       <div v-if="showTooltip" class="tooltip-baloon">
-        <span class="font-weight-bold title">Como calculamos o vencedor?</span>
+        <span class="font-weight-bold title">How we calculate the winner?</span>
         <span class="subtitle"
-          ><span class="font-weight-bold">Followers:</span> 2 Pontos</span
+          ><span class="font-weight-bold">Followers:</span> 2 points</span
         >
         <span class="subtitle"
-          ><span class="font-weight-bold">Public Repos:</span> 1.5 Pontos</span
+          ><span class="font-weight-bold">Public Repos:</span> 1.5 points</span
         >
         <span class="subtitle"
-          ><span class="font-weight-bold">Stars:</span> 2 Pontos</span
+          ><span class="font-weight-bold">Stars:</span> 2 points</span
         >
         <span class="subtitle"
-          ><span class="font-weight-bold">Forks:</span> 1 Pontos</span
+          ><span class="font-weight-bold">Forks:</span> 1 points</span
         >
       </div>
     </Transition>

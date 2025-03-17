@@ -7,7 +7,7 @@
       <div class="input-container">
         <div class="input-box">
           <GBInput v-model="user1" label="User 1" />
-          <img src="./assets/vs-showdown.png" alt="" class="showdown" />
+          <img src="../assets/vs-showdown.png" alt="" class="showdown" />
           <GBInput v-model="user2" label="User 2" />
         </div>
       </div>
@@ -62,7 +62,7 @@ const compareUsers = async () => {
       emits("update:results", data);
     } else showToastBar("Please, insert two users");
   } catch (error) {
-    console.log("Erro ao buscar dados:", error);
+    console.log("Error fetching data:", error);
     showToastBar("Error fetching data. Please try again");
   }
 
@@ -115,5 +115,9 @@ const showToastBar = (text) => {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.showdown {
+  width: 100px;
 }
 </style>
