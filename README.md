@@ -43,7 +43,10 @@ Run
 npm run dev
 ```
 
-### 🌐 API URL
+###  GIT BATTLE API
+https://github.com/VitorFerronato/git-battle-api
+
+### 🌐 DEPLOY
 https://vf-gitbattle.netlify.app/
 
 
