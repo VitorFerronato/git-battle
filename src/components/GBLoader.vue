@@ -6,6 +6,7 @@
 .loader {
   width: 40px;
   padding: 8px;
+  margin-top: 1rem;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--primary-color);

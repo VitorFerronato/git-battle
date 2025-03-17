@@ -89,8 +89,4 @@ defineProps({
 .how-winner:hover {
   text-decoration: underline;
 }
-
-.font-weight-bold {
-  font-weight: bold;
-}
 </style>

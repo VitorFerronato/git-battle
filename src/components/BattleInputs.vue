@@ -1,31 +1,23 @@
 <template>
-  <div class="battle-container">
+  <form @submit.prevent="compareUsers" class="battle-container">
     <div>
       <div class="image-box">
         <img src="../assets/wallpapper.png" alt="" />
       </div>
       <div class="input-container">
         <div class="input-box">
-          <GBInput
-            v-model="user1"
-            label="User 1"
-            @keypress.enter="compareUsers"
-          />
+          <GBInput v-model="user1" label="User 1" />
           <img src="./assets/vs-showdown.png" alt="" class="showdown" />
-          <GBInput
-            v-model="user2"
-            label="User 2"
-            @keypress.enter="compareUsers"
-          />
+          <GBInput v-model="user2" label="User 2" />
         </div>
       </div>
 
       <div class="button-box">
-        <GBButton v-if="!isLoading" title="Fight!" @click="compareUsers" />
+        <GBButton v-if="!isLoading" title="Fight!" type="submit" />
         <GBLoader v-else />
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script setup>
@@ -33,7 +25,8 @@ import { ref } from "vue";
 import GBInput from "./GBInput.vue";
 import GBButton from "./GBButton.vue";
 import GBLoader from "./GBLoader.vue";
-
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 defineProps({
   results: Object,
 });
@@ -48,7 +41,13 @@ const compareUsers = async () => {
   isLoading.value = true;
 
   if (!user1.value || !user2.value) {
-    alert("Por favor, insira dois usuários!");
+    showToastBar("Insert two users");
+    isLoading.value = false;
+    return;
+  }
+
+  if (user1.value == user2.value) {
+    showToastBar("Insert two different users");
     isLoading.value = false;
     return;
   }
@@ -61,13 +60,24 @@ const compareUsers = async () => {
     if (response.status == 200) {
       const data = await response.json();
       emits("update:results", data);
-    } else alert("Erro ao buscar os dados, Tente novamente!");
+    } else showToastBar("Please, insert two users");
   } catch (error) {
     console.log("Erro ao buscar dados:", error);
-    alert("Erro ao buscar os dados. Tente novamente!");
+    showToastBar("Error fetching data. Please try again");
   }
 
   isLoading.value = false;
+};
+
+const showToastBar = (text) => {
+  toast(text, {
+    theme: "auto",
+    type: "error",
+    position: "bottom-right",
+    autoClose: 2000,
+    pauseOnHover: false,
+    dangerouslyHTMLString: true,
+  });
 };
 </script>
 
@@ -75,7 +85,6 @@ const compareUsers = async () => {
 .battle-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
@@ -105,6 +114,6 @@ const compareUsers = async () => {
 .button-box {
   display: flex;
   justify-content: center;
-  margin: 2.5rem 0 6rem 0;
+  align-items: center;
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
-  <a v-bind="$attrs" href="#" class="button">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    {{ title }}</a
-  >
+  <button>
+    <a v-bind="$attrs" href="#" class="button">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      {{ title }}
+    </a>
+  </button>
 </template>
 
 <script setup>
@@ -13,8 +15,17 @@ defineProps({ title: String });
 </script>
 
 <style scoped>
+button {
+  all: unset;
+  position: relative;
+  transition: 0.3s;
+}
+
 a {
   position: absolute;
+  top: calc(50% + 3rem);
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 12px 24px;
   color: var(--primary-color);
   text-transform: uppercase;
@@ -26,7 +37,7 @@ a {
   transition: 0.2s;
 }
 
-a:hover {
+button:hover {
   transform: scale(1.1);
 }
 
