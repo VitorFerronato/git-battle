@@ -54,7 +54,7 @@ const compareUsers = async () => {
 
   try {
     const response = await fetch(
-      `https://git-battle-api.onrender.com/compare?dev1=${user1.value}&dev2=${user2.value}`
+      `https://web-production-8c8e7.up.railway.app/compare?dev1=${user1.value}&dev2=${user2.value}`
     );
 
     if (response.status == 200) {
