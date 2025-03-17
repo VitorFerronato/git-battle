@@ -1,12 +1,12 @@
 <template>
-  <button>
-    <a v-bind="$attrs" href="#" class="button">
+  <button v-bind="$attrs" type="submit">
+    <div class="button">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
       {{ title }}
-    </a>
+    </div>
   </button>
 </template>
 
@@ -19,9 +19,10 @@ button {
   all: unset;
   position: relative;
   transition: 0.3s;
+  cursor: pointer;
 }
 
-a {
+.button {
   position: absolute;
   top: calc(50% + 3rem);
   left: 50%;
@@ -41,7 +42,7 @@ button:hover {
   transform: scale(1.1);
 }
 
-a::before {
+.button::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -50,7 +51,7 @@ a::before {
   width: 50%;
 }
 
-a span:nth-child(1) {
+.button span:nth-child(1) {
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +75,7 @@ a span:nth-child(1) {
   }
 }
 
-a span:nth-child(2) {
+.button span:nth-child(2) {
   position: absolute;
   top: 0;
   right: 0;
@@ -98,7 +99,7 @@ a span:nth-child(2) {
   }
 }
 
-a span:nth-child(3) {
+.button span:nth-child(3) {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -122,7 +123,7 @@ a span:nth-child(3) {
   }
 }
 
-a span:nth-child(4) {
+.button span:nth-child(4) {
   position: absolute;
   top: 0;
   left: 0;

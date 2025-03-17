@@ -5,11 +5,10 @@
       <img src="../assets/vs-showdown.png" alt="" class="showdown" />
       <ResultCard :dev="results?.dev2" />
     </div>
-
     <div v-if="results?.winner">
       <div class="winner">
         <h4>WINNER</h4>
-        <p>{{ results.winner }}</p>
+        <p>{{ results?.winner.username }}</p>
 
         <Tooltip />
       </div>

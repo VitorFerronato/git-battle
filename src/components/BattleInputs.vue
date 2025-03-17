@@ -54,13 +54,13 @@ const compareUsers = async () => {
 
   try {
     const response = await fetch(
-      `http://127.0.0.1:5000/compare?dev1=${user1.value}&dev2=${user2.value}`
+      `https://git-battle-api.onrender.com/compare?dev1=${user1.value}&dev2=${user2.value}`
     );
 
     if (response.status == 200) {
       const data = await response.json();
       emits("update:results", data);
-    } else showToastBar("Please, insert two users");
+    } else showToastBar("Error fetching data. Please try again");
   } catch (error) {
     console.log("Error fetching data:", error);
     showToastBar("Error fetching data. Please try again");
